@@ -1,0 +1,96 @@
+header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+}
+
+header label {
+    margin-left: auto;
+}
+
+.subtitle {
+    margin: 0 0 0.75em 0;
+    font-size: 0.95em;
+    color: gray;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header time,
+header em {
+    display: block;
+}
+
+header em {
+    color: gray;
+    font-style: italic;
+}
+
+#time-slider {
+    width: 300px;
+}
+
+#map svg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#map svg circle,
+.legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+}
+
+#map svg circle {
+    fill: var(--color);
+    fill-opacity: 0.6;
+    pointer-events: auto;
+}
+
+.legend {
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    margin-block: 1em;
+    justify-content: center;
+}
+
+.legend span {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: gray;
+}
+
+.legend > div {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.9em;
+}
+
+.legend > div::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: var(--color);
+}
+
+#map {
+    width: 100%;
+    height: 80vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
